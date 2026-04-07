@@ -89,10 +89,10 @@ class LinearHashTable:
         total = 0
         i = 0
         for ch in key:
-            total += ord(ch) * (i + 1)
+            total += ord(ch) * (i + 3)
             i += 1
         return total % self.size
-
+    
     def add(self, key, data):
         index = self.hash_function(key)
         start = index
@@ -182,7 +182,7 @@ def main():
     t1 = build_table(title_table, movies, True)
     t2 = build_table(quote_table, movies, False)
 
-    print("ATTEMPT 3 - LINEAR PROBING / POOR HASH")
+    print("ATTEMPT 4 - LINEAR PROBING / BETTER HASH")
     print()
     print_stats("Hash Table 1: Movie Title as Key", "Linked List", title_table, t1)
     print_stats("Hash Table 2: Movie Quote as Key", "Linked List", quote_table, t2)
