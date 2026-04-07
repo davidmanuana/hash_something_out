@@ -175,14 +175,14 @@ def main():
     print("Total movie records loaded:", len(movies))
     print()
 
- # ATTEMPT 1
-    title_table = LinkedHashTable(2003)
-    quote_table = LinkedHashTable(2003)
+ # ATTEMPTS
+    title_table = LinkedHashTable(20011)
+    quote_table = LinkedHashTable(20011)
 
     t1 = build_table(title_table, movies, True)
     t2 = build_table(quote_table, movies, False)
 
-    print("ATTEMPT 2 - LINKED LIST / BETTER HASH")
+    print("ATTEMPT 3 - LINEAR PROBING / POOR HASH")
     print()
     print_stats("Hash Table 1: Movie Title as Key", "Linked List", title_table, t1)
     print_stats("Hash Table 2: Movie Quote as Key", "Linked List", quote_table, t2)
