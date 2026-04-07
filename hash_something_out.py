@@ -1,4 +1,4 @@
-# Name: David
+# Name: David Manuana
 # Course: COS 226
 # Assignment: Hash something out
 # Purpose: Build two hash tables for movie records and test different hash functions.
@@ -6,7 +6,6 @@
 
 import time
 import csv
-
 
 class MovieRecord:
     # store one movie row
@@ -16,7 +15,6 @@ class MovieRecord:
 
     def __str__(self):
         return self.title + " | " + self.quote
-
 
 class Node:
     # linked list node
@@ -88,9 +86,12 @@ class LinearHashTable:
 
     # ATTEMPT 3/4/5 HASH
     def hash_function(self, key):
-        if key == "":
-            return 0
-        return (ord(key[0]) + len(key)) % self.size
+        total = 0
+        i = 0
+        for ch in key:
+            total += ord(ch) * (i + 1)
+            i += 1
+        return total % self.size
 
     def add(self, key, data):
         index = self.hash_function(key)
@@ -175,13 +176,13 @@ def main():
     print()
 
  # ATTEMPT 1
-    title_table = LinkedHashTable(1009)
-    quote_table = LinkedHashTable(1009)
+    title_table = LinkedHashTable(2003)
+    quote_table = LinkedHashTable(2003)
 
     t1 = build_table(title_table, movies, True)
     t2 = build_table(quote_table, movies, False)
 
-    print("ATTEMPT 1 - LINKED LIST / POOR HASH")
+    print("ATTEMPT 2 - LINKED LIST / BETTER HASH")
     print()
     print_stats("Hash Table 1: Movie Title as Key", "Linked List", title_table, t1)
     print_stats("Hash Table 2: Movie Quote as Key", "Linked List", quote_table, t2)
