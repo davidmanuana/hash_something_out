@@ -86,12 +86,10 @@ class LinearHashTable:
 
     # ATTEMPT 3/4/5 HASH
     def hash_function(self, key):
-        total = 0
-        i = 0
+        total = 5381
         for ch in key:
-            total += ord(ch) * (i + 3)
-            i += 1
-        return total % self.size
+            total = ((total * 33) + ord(ch)) % self.size
+        return total
     
     def add(self, key, data):
         index = self.hash_function(key)
@@ -176,13 +174,13 @@ def main():
     print()
 
  # ATTEMPTS
-    title_table = LinkedHashTable(20011)
-    quote_table = LinkedHashTable(20011)
+    title_table = LinkedHashTable(17011)
+    quote_table = LinkedHashTable(17011)
 
     t1 = build_table(title_table, movies, True)
     t2 = build_table(quote_table, movies, False)
 
-    print("ATTEMPT 4 - LINEAR PROBING / BETTER HASH")
+    print("ATTEMPT 5 - LINEAR PROBING / ROLLING HASH")
     print()
     print_stats("Hash Table 1: Movie Title as Key", "Linked List", title_table, t1)
     print_stats("Hash Table 2: Movie Quote as Key", "Linked List", quote_table, t2)
